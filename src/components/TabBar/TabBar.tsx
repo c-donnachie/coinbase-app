@@ -10,6 +10,7 @@ export const TabBar = ({ state, navigation }: BottomTabBarProps) => {
     return (
         <View style={s.tabBar}>
             {
+
                 state.routes.map((route, index) => {
                     const focused = state.index === index
                     const isActions = route.name === 'Actions'

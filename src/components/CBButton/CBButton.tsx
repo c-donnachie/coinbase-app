@@ -7,7 +7,7 @@ interface CCButonProps {
     title: string
 }
 
-export const CBButton: FC<CCButonProps> = ({ title }) => {
+export const CBButton: React.FC<CCButonProps> = ({ title }) => {
 
     const animatedValue = new Animated.Value(1)
 
