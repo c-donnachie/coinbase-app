@@ -1,5 +1,6 @@
 export default {
     cbBlue: "#0053f8",
+    secondary: '#f2f2f2f2',
     subTitle: "rgb(92, 98, 110)",
     black: "#000",
     border: "rgb(223, 225, 226)",

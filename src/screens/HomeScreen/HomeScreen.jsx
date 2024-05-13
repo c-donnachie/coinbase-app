@@ -1,5 +1,5 @@
+import * as React from 'react'
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useContext, useState } from 'react'
 import { GS } from '@/styles/global'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { BottomSContext } from '@/context/BottomSContext'
@@ -7,20 +7,30 @@ import { useDispatch } from 'react-redux'
 import { signOut } from '@/features/auth/auth'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import * as Haptics from 'expo-haptics';
-// Define una interfaz para los parámetros de navegación
-// interface NavigationParams {
-//   Settings: undefined; // Define aquí los parámetros para cada pantalla
-//   News: undefined;
-// }
 
 export const HomeScreen = () => {
 
   {/* <NavigationProp<NavigationParams>> */ }
   // Usa la interfaz NavigationProp para tipar el objeto de navegación
   const { navigate } = useNavigation();
-  const { handleExpandPress } = useContext(BottomSContext)
+  const { handleExpandPress } = React.useContext(BottomSContext)
 
   const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    checkFirstLaunch()
+  }, [])
+
+  const checkFirstLaunch = async () => {
+    const firstLaunch = await AsyncStorage.getItem('@firstLaunch')
+    if (firstLaunch) {
+      return
+    } else {
+      await AsyncStorage.setItem('@firstLauch', 'true')
+      navigate('Onboarding')
+    }
+  }
+
 
   return (
     <View style={GS.screenContainer}>

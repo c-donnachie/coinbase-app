@@ -41,6 +41,9 @@ export const MyStack = () => {
 
             // }}
             />
+            <HomeStack.Screen name="Onboarding" component={Onboarding}
+                options={{headerShown: false}}
+            />
             <HomeStack.Group
             >
                 <HomeStack.Screen name="News" component={News}
